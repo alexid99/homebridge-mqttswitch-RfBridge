@@ -1,0 +1,47 @@
+{
+    "bridge": {
+        "name": "Homebridge 2FFB",
+        "username": "0E:15:91:32:2F:FB",
+        "port": 51012,
+        "pin": "792-15-272"
+    },
+    "platforms": [
+        {
+            "name": "Config",
+            "port": 8581,
+            "platform": "config"
+        }
+    ],
+    "accessories": [
+        {
+            "accessory": "mqttswitch",
+            "type": "switch",
+            "name": "Торшер",
+            "logMqtt": true,
+            "url": "http://192.168.100.26:1883",
+            "topics": {
+                "setOn": "cmnd/sonoff/RfKey1",
+                "setOff": "cmnd/sonoff/RfKey2",
+                "getOn": "stat/sonoff/Result",
+               
+            },
+            "onValue": "6",
+            "offValue": "6"
+        },
+        {
+            "accessory": "mqttswitch",
+            "type": "switch",
+            "name": "Саб",
+            "logMqtt": true,
+            "url": "http://192.168.100.26:1883",
+            "topics": {
+                "setOn": "cmnd/sonoff/RfKey3",
+                "getOn": "stat/sonoff/Result",
+                "setOff": "cmnd/sonoff/RfKey4",
+               
+            },
+            "onValue": "6",
+            "offValue": "6"
+        }
+    ]
+}
