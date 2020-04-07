@@ -60,7 +60,7 @@ function mqttswitchAccessory(log, config) {
       .getCharacteristic(Characteristic.On)
     	.on('get', this.getStatus.bind(this))
     	.on('set', this.setStatus.bind(this));
-    /*this.service
+/*    this.service
       .getCharacteristic(Characteristic.Brightness)
     	.on('get', this.getBrightness.bind(this))
     	.on('set', this.setBrightness.bind(this));
@@ -72,7 +72,7 @@ function mqttswitchAccessory(log, config) {
       .getCharacteristic(Characteristic.Saturation)
     	.on('get', this.getSaturation.bind(this))
     	.on('set', this.setSaturation.bind(this));
-
+*/
 	// connect to MQTT broker
 	this.client = mqtt.connect(this.url, this.options);
 	var that = this;
@@ -81,7 +81,7 @@ function mqttswitchAccessory(log, config) {
 	});
 
 	this.client.on('message', function (topic, message) {
-    // console.log(message.toString(), topic);
+     console.log(message.toString(), topic);
 
 		if (topic == that.topics.getOn) {
 			var status = message.toString();
@@ -94,7 +94,7 @@ function mqttswitchAccessory(log, config) {
       that.brightness = val;
       that.service.getCharacteristic(Characteristic.Brightness).setValue(that.brightness, undefined, 'fromSetValue');
     }
-
+/*
     if (topic == that.topics.getHue) {
       var val = parseInt(message.toString());
       that.hue = val;
@@ -106,12 +106,14 @@ function mqttswitchAccessory(log, config) {
       that.saturation = val;
       that.service.getCharacteristic(Characteristic.Brightness).setValue(that.saturation, undefined, 'fromSetValue');
     }
-	});
+*/
+    });
+
     this.client.subscribe(this.topics.getOn);
-    this.client.subscribe(this.topics.getBrightness);
-    this.client.subscribe(this.topics.getHue);
-    this.client.subscribe(this.topics.getSaturation);
-    */
+    //this.client.subscribe(this.topics.getBrightness);
+    //this.client.subscribe(this.topics.getHue);
+    //this.client.subscribe(this.topics.getSaturation);
+    
 }
 
 module.exports = function(homebridge) {
@@ -158,8 +160,8 @@ mqttswitchAccessory.prototype.setHue = function(hue, callback, context) {
 	  this.client.publish(this.topics.setHue, this.hue.toString());
 	}
 	callback();
-}*/
-/*
+}
+
 mqttswitchAccessory.prototype.getSaturation = function(callback) {
     callback(null, this.saturation);
 }

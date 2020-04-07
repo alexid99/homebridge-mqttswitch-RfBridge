@@ -1,7 +1,7 @@
 {
     "name": "homebridge-mqttswitch-RfBridge",
     "version": "0.0.1",
-    "description": "Homebridge plugin for MQTT Switch",
+    "description": "Homebridge plugin for MQTT Sonoff RfBridge",
     "note": "peerDependencies is hardcoded to peerDepdendencies in homebridge!!!",
     "main": "index.js",
     "scripts": {
@@ -28,7 +28,7 @@
         "mqtt": "^1.6.3"
     },
     "author": "alexid99",
-    "license": "",
+    "license": "0BSD",
     "bugs": {
         "url": "https://github.com/alexid99/homebridge-mqttswitch-RfBridge/issues"
     },
